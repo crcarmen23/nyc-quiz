@@ -1,8 +1,10 @@
-
+var startSection = document.getElementById("start-screen")
 var timerElement = document.getElementById("timer")
 var startButton = document.getElementById("start-button")
-
-
+var currentQuestion = 0
+var questionsEl = document.getElementById("questions")
+var timeLeft = 75
+var timeInterval = null
 
 var myQuestions = [{
     questionText: "How many boroughs are in New York City?",
@@ -26,42 +28,63 @@ var myQuestions = [{
     correctAnswer: "Wall Street"
 }]
 
-myQuestions[0].questionText
-myQuestions[0].choices[0]
-myQuestions[0].correctAnswer
+function renderQuestion () {
+  questionsEl.innerHTML= ""
+var questionText = document.createElement("h2")
+questionText.textContent= myQuestions[currentQuestion].questionText
+questionsEl.append (questionText)
 
-//on click 
-myQuestions[1]
-
-function startQuiz() {
-  timeLeft = 60;
-  countdown()
+for (var i=0; i < myQuestions[currentQuestion].choices.length; i++) {
+var choiceButton = document.createElement("button")
+choiceButton.textContent= myQuestions[currentQuestion].choices[i]
+choiceButton.style.display= "block"
+questionsEl.append (choiceButton)
+}
 }
 
+function handleAnswerClick (event) {
+  if (event.target.tagName !== "BUTTON"){
+    return
+  } 
+if (event.target.textContent === myQuestions[currentQuestion].correctAnswer) {
+  console.log("correct")
+} else {
+  console.log("false")
+  timeLeft -= 15
+} 
+currentQuestion++
+if (currentQuestion >= myQuestions.length-1) {
+  endQuiz ()
+}
+renderQuestion () 
+}
+
+function endQuiz () {
+  console.log("Game over.")
+  clearInterval(timeInterval)
+}
+
+
+
+//countdown timer 
+function startQuiz() {
+  startSection.style.display= "none"
+  countdown()
+  renderQuestion()
+}
 function countdown() {
-    var timeLeft = 60;
   
-  var timeInterval = setInterval(function () {
-    if (timeLeft > 1) {
-      timerElement.textContent = timeLeft;
-      timeLeft--;
-    } else if (timeLeft === 1) {
+  timeInterval = setInterval(function () {
+    if (timeLeft >= 1) {
       timerElement.textContent = timeLeft;
       timeLeft--;
     } else {
       timerElement.textContent = '0';
       clearInterval(timeInterval);
-      gameOver();
+      endQuiz();
     }
   }, 1000);
   }
-  
-  function gameOver (){
-  wordBlank.textContent = "GAME OVER"
-  }
-  
-  countdown();
 
   startButton.addEventListener("click", startQuiz);
-
-  init();
+  questionsEl.addEventListener("click", handleAnswerClick)
