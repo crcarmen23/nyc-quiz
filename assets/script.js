@@ -1,4 +1,7 @@
 
+var timerElement = document.querySelector(".timer")
+
+
 var myQuestions = [{
     questionText: "How many boroughs are in New York City?",
     choices: ["4", "5", "6", "3"],
@@ -30,3 +33,28 @@ myQuestions[0].correctAnswer
 
 //on click 
 myQuestions[1]
+
+
+function countdown() {
+    var timeLeft = 60;
+  
+  var timeInterval = setInterval(function () {
+    if (timeLeft > 1) {
+      timerElement.textContent = timeLeft;
+      timeLeft--;
+    } else if (timeLeft === 1) {
+      timerElement.textContent = timeLeft;
+      timeLeft--;
+    } else {
+      timerElement.textContent = '0';
+      clearInterval(timeInterval);
+      gameOver();
+    }
+  }, 1000);
+  }
+  
+  function gameOver (){
+  wordBlank.textContent = "GAME OVER"
+  }
+  
+  countdown();
