@@ -1,5 +1,7 @@
 
-var timerElement = document.querySelector(".timer")
+var timerElement = document.getElementById("timer")
+var startButton = document.getElementById("start-button")
+
 
 
 var myQuestions = [{
@@ -24,9 +26,6 @@ var myQuestions = [{
     correctAnswer: "Wall Street"
 }]
 
-
-
-
 myQuestions[0].questionText
 myQuestions[0].choices[0]
 myQuestions[0].correctAnswer
@@ -34,6 +33,10 @@ myQuestions[0].correctAnswer
 //on click 
 myQuestions[1]
 
+function startQuiz() {
+  timeLeft = 60;
+  countdown()
+}
 
 function countdown() {
     var timeLeft = 60;
@@ -58,3 +61,7 @@ function countdown() {
   }
   
   countdown();
+
+  startButton.addEventListener("click", startQuiz);
+
+  init();
