@@ -1,0 +1,21 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 45px;
+    color: rgb(52, 52, 172); 
+}
+
+p {
+    font-size: 20px;
+    color: rgb(55, 55, 56);
+    margin-left: 230px;
+    margin-right: 230px;
+}
+
+button {
+    background-color: rgb(52, 52, 172);
+    color: aliceblue;
+}
