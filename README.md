@@ -12,9 +12,9 @@ N/A
 
 This website can be used to take a quiz and learn about the wonderful city of New York City. The goal is to take the quiz as fast has possible and answer all the questions correctly to avoid a penalty on your score. 
 
-[Link to New York City Quiz webpage](https://crcarmen23.github.io/carmen-mockup-portfolio/)
+[Link to New York City Quiz webpage](https://crcarmen23.github.io/nyc-quiz/)
 
-![screenshot](assets/images/)
+![screenshot](assets/screenshot.png)
 
 
 ## Credits
