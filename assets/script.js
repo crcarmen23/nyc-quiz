@@ -5,6 +5,7 @@ var currentQuestion = 0
 var questionsEl = document.getElementById("questions")
 var timeLeft = 75
 var timeInterval = null
+var gameOver = document.getElementById("enter-initials-form")
 
 var myQuestions = [{
     questionText: "How many boroughs are in New York City?",
@@ -53,7 +54,7 @@ if (event.target.textContent === myQuestions[currentQuestion].correctAnswer) {
   timeLeft -= 15
 } 
 currentQuestion++
-if (currentQuestion >= myQuestions.length-1) {
+if (currentQuestion >= myQuestions.length) {
   endQuiz ()
 }
 renderQuestion () 
@@ -62,6 +63,7 @@ renderQuestion ()
 function endQuiz () {
   console.log("Game over.")
   clearInterval(timeInterval)
+  gameOver.textContent= "Your game is over. Please enter your initials here to save your score: "
 }
 
 
@@ -76,7 +78,7 @@ function countdown() {
   
   timeInterval = setInterval(function () {
     if (timeLeft >= 1) {
-      timerElement.textContent = timeLeft;
+      timerElement.textContent = 'Your Score: ' + timeLeft;
       timeLeft--;
     } else {
       timerElement.textContent = '0';
