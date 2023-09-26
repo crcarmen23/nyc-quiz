@@ -51,7 +51,7 @@ if (event.target.textContent === myQuestions[currentQuestion].correctAnswer) {
   console.log("correct")
 } else {
   console.log("false")
-  timeLeft -= 15
+  timeLeft -= 20
 } 
 currentQuestion++
 if (currentQuestion >= myQuestions.length) {
