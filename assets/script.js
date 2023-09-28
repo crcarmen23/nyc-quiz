@@ -63,10 +63,31 @@ renderQuestion ()
 function endQuiz () {
   console.log("Game over.")
   clearInterval(timeInterval)
-  gameOver.textContent= "Your game is over. Please enter your initials here to save your score: "
+  gameOver.style.display= "block"
+ 
 }
 
+document.querySelector('.submitInitials').addEventListener('click', function (){
+  var scores = JSON.parse(localStorage.getItem('scores'))||[]
+  var scoreObject = {
+    score: timeLeft,
+    initials: document.querySelector('.initials').value
+  }
+scores.push(scoreObject)
+localStorage.setItem('scores',JSON.stringify(scores))
+window.location.reload()
+})
 
+document.querySelector('#view-highscores').addEventListener('click',function(){
+  document.querySelector('#score-board').style.display= 'block'
+  document.querySelector('#start-screen').style.display= 'none'
+  var scores = JSON.parse(localStorage.getItem('scores'))||[]
+  for (var i=0; i < scores.length; i++) {
+    var score = document.createElement('p')
+    score.innerText= scores[i].initials+' '+scores[i].score
+    document.querySelector('#score-board').appendChild(score)
+  }
+})
 
 //countdown timer 
 function startQuiz() {

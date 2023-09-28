@@ -46,3 +46,11 @@ img {
     padding-left: 10px;
 }
 
+#enter-initials-form {
+    display: none;
+}
+
+#score-board {
+    display:none;
+    
+}
