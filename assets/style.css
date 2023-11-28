@@ -11,8 +11,8 @@ h1 {
 p {
     font-size: 20px;
     color: rgb(55, 55, 56);
-    margin-left: 230px;
-    margin-right: 230px;
+    margin-left: 275px;
+    margin-right: 275px;
 }
 
 button {
@@ -21,6 +21,7 @@ button {
     font-size: 35px;
     margin: 0 auto;
     border-radius: 15px;
+    margin-top: 10px;
   
 }
 
